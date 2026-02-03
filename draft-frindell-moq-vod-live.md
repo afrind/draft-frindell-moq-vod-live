@@ -1001,7 +1001,9 @@ parameter and a Track Extension Header.
 TODO acknowledge.
 
 # Changelog
+{:numbered="false"}
 
 ## draft-frindell-moq-vod-live-00
+{:numbered="false"}
 
 - Initial version
