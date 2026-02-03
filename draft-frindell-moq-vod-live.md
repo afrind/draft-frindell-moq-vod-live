@@ -19,8 +19,8 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "MOQT Extention for VOD and Live Transitions"
+abbrev: "moqt-vodl"
 category: info
 
 docname: draft-todo-yourname-protocol-latest
