@@ -1054,7 +1054,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Frindell</td>
-<td class="center">Expires 7 August 2026</td>
+<td class="center">Expires 8 August 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-frindell-moq-vod-live-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-02-03" class="published">3 February 2026</time>
+<time datetime="2026-02-04" class="published">4 February 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-08-07">7 August 2026</time></dd>
+<dd class="expires"><time datetime="2026-08-08">8 August 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1126,7 +1126,7 @@ transition from VOD to live playback.<a href="#section-abstract-1" class="pilcro
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 7 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1161,10 +1161,13 @@ transition from VOD to live playback.<a href="#section-abstract-1" class="pilcro
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+                <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-extension-negotiation" class="internal xref">Extension Negotiation</a></p>
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-extension-negotiation" class="internal xref">Extension Negotiation</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-subscribe-parameters" class="internal xref">SUBSCRIBE Parameters</a></p>
@@ -1229,13 +1232,13 @@ transition from VOD to live playback.<a href="#section-abstract-1" class="pilcro
                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-fill-semantics" class="internal xref">Fill Semantics</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
-                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-subgroup-stream-constraints" class="internal xref">Subgroup Stream Constraints</a></p>
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-delivery-constraints" class="internal xref">Delivery Constraints</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
-                <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-subgroup-ordering-within-a-" class="internal xref">Subgroup Ordering Within a Group</a></p>
+                <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-pacing" class="internal xref">Pacing</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
-                <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-stream-credit-limits" class="internal xref">Stream Credit Limits</a></p>
+                <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-stream-delivery" class="internal xref">Stream Delivery</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5">
                 <p id="section-toc.1-1.7.2.5.1"><a href="#section-7.5" class="auto internal xref">7.5</a>.  <a href="#name-datagram-delivery" class="internal xref">Datagram Delivery</a></p>
@@ -1249,50 +1252,47 @@ transition from VOD to live playback.<a href="#section-abstract-1" class="pilcro
                 <p id="section-toc.1-1.7.2.6.1"><a href="#section-7.6" class="auto internal xref">7.6</a>.  <a href="#name-multi-track-synchronization" class="internal xref">Multi-Track Synchronization</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.7">
-                <p id="section-toc.1-1.7.2.7.1"><a href="#section-7.7" class="auto internal xref">7.7</a>.  <a href="#name-pacing" class="internal xref">Pacing</a></p>
+                <p id="section-toc.1-1.7.2.7.1"><a href="#section-7.7" class="auto internal xref">7.7</a>.  <a href="#name-timeout-semantics" class="internal xref">Timeout Semantics</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.7.2.1">
+                    <p id="section-toc.1-1.7.2.7.2.1.1"><a href="#section-7.7.1" class="auto internal xref">7.7.1</a>.  <a href="#name-timeout-activation" class="internal xref">Timeout Activation</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.7.2.2">
+                    <p id="section-toc.1-1.7.2.7.2.2.1"><a href="#section-7.7.2" class="auto internal xref">7.7.2</a>.  <a href="#name-base-layer-immunity" class="internal xref">Base Layer Immunity</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.7.2.3">
+                    <p id="section-toc.1-1.7.2.7.2.3.1"><a href="#section-7.7.3" class="auto internal xref">7.7.3</a>.  <a href="#name-timeout-behavior" class="internal xref">Timeout Behavior</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.7.2.4">
+                    <p id="section-toc.1-1.7.2.7.2.4.1"><a href="#section-7.7.4" class="auto internal xref">7.7.4</a>.  <a href="#name-example-2" class="internal xref">Example</a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.8">
                 <p id="section-toc.1-1.7.2.8.1"><a href="#section-7.8" class="auto internal xref">7.8</a>.  <a href="#name-backpressure" class="internal xref">Backpressure</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.9">
-                <p id="section-toc.1-1.7.2.9.1"><a href="#section-7.9" class="auto internal xref">7.9</a>.  <a href="#name-timeout-semantics" class="internal xref">Timeout Semantics</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.9.2.1">
-                    <p id="section-toc.1-1.7.2.9.2.1.1"><a href="#section-7.9.1" class="auto internal xref">7.9.1</a>.  <a href="#name-timeout-activation" class="internal xref">Timeout Activation</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.9.2.2">
-                    <p id="section-toc.1-1.7.2.9.2.2.1"><a href="#section-7.9.2" class="auto internal xref">7.9.2</a>.  <a href="#name-base-layer-immunity" class="internal xref">Base Layer Immunity</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.9.2.3">
-                    <p id="section-toc.1-1.7.2.9.2.3.1"><a href="#section-7.9.3" class="auto internal xref">7.9.3</a>.  <a href="#name-timeout-behavior" class="internal xref">Timeout Behavior</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.9.2.4">
-                    <p id="section-toc.1-1.7.2.9.2.4.1"><a href="#section-7.9.4" class="auto internal xref">7.9.4</a>.  <a href="#name-example-2" class="internal xref">Example</a></p>
-</li>
-                </ul>
+                <p id="section-toc.1-1.7.2.9.1"><a href="#section-7.9" class="auto internal xref">7.9</a>.  <a href="#name-pause-and-resume" class="internal xref">Pause and Resume</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.10">
-                <p id="section-toc.1-1.7.2.10.1"><a href="#section-7.10" class="auto internal xref">7.10</a>. <a href="#name-pause-and-resume" class="internal xref">Pause and Resume</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.11">
-                <p id="section-toc.1-1.7.2.11.1"><a href="#section-7.11" class="auto internal xref">7.11</a>. <a href="#name-catching-up-after-pause" class="internal xref">Catching Up After Pause</a></p>
+                <p id="section-toc.1-1.7.2.10.1"><a href="#section-7.10" class="auto internal xref">7.10</a>. <a href="#name-catching-up-after-pause" class="internal xref">Catching Up After Pause</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.11.2.1">
-                    <p id="section-toc.1-1.7.2.11.2.1.1"><a href="#section-7.11.1" class="auto internal xref">7.11.1</a>.  <a href="#name-example-flow" class="internal xref">Example Flow</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.10.2.1">
+                    <p id="section-toc.1-1.7.2.10.2.1.1"><a href="#section-7.10.1" class="auto internal xref">7.10.1</a>.  <a href="#name-example-flow" class="internal xref">Example Flow</a></p>
 </li>
                 </ul>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.12">
-                <p id="section-toc.1-1.7.2.12.1"><a href="#section-7.12" class="auto internal xref">7.12</a>. <a href="#name-delivery-examples" class="internal xref">Delivery Examples</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.11">
+                <p id="section-toc.1-1.7.2.11.1"><a href="#section-7.11" class="auto internal xref">7.11</a>. <a href="#name-delivery-examples" class="internal xref">Delivery Examples</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.12.2.1">
-                    <p id="section-toc.1-1.7.2.12.2.1.1"><a href="#section-7.12.1" class="auto internal xref">7.12.1</a>.  <a href="#name-video-track-example" class="internal xref">Video Track Example</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.11.2.1">
+                    <p id="section-toc.1-1.7.2.11.2.1.1"><a href="#section-7.11.1" class="auto internal xref">7.11.1</a>.  <a href="#name-video-track-example" class="internal xref">Video Track Example</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.12.2.2">
-                    <p id="section-toc.1-1.7.2.12.2.2.1"><a href="#section-7.12.2" class="auto internal xref">7.12.2</a>.  <a href="#name-audio-track-example" class="internal xref">Audio Track Example</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.11.2.2">
+                    <p id="section-toc.1-1.7.2.11.2.2.1"><a href="#section-7.11.2" class="auto internal xref">7.11.2</a>.  <a href="#name-audio-track-example" class="internal xref">Audio Track Example</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.12.2.3">
-                    <p id="section-toc.1-1.7.2.12.2.3.1"><a href="#section-7.12.3" class="auto internal xref">7.12.3</a>.  <a href="#name-combined-flow-control-and-c" class="internal xref">Combined Flow Control and Credit Example</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.11.2.3">
+                    <p id="section-toc.1-1.7.2.11.2.3.1"><a href="#section-7.11.3" class="auto internal xref">7.11.3</a>.  <a href="#name-combined-flow-control-and-c" class="internal xref">Combined Flow Control and Credit Example</a></p>
 </li>
                 </ul>
 </li>
@@ -1406,6 +1406,29 @@ which uses a single stream)<a href="#section-1-3.2.1" class="pilcrow">¶</a></p>
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
 appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="terminology">
+<section id="section-1.2">
+        <h3 id="name-terminology">
+<a href="#section-1.2" class="section-number selfRef">1.2. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
+        </h3>
+<span class="break"></span><dl class="dlParallel" id="section-1.2-1">
+          <dt id="section-1.2-1.1">Base Layer:</dt>
+          <dd style="margin-left: 1.5em" id="section-1.2-1.2">
+            <p id="section-1.2-1.2.1">The content at the highest priority (lowest Publisher Priority value)
+within a group. Base layer content is essential for playback and
+receives preferential treatment in timeout and delivery decisions.<a href="#section-1.2-1.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-1.2-1.3">Enhancement Layer:</dt>
+          <dd style="margin-left: 1.5em" id="section-1.2-1.4">
+            <p id="section-1.2-1.4.1">Any content at lower priority (higher Publisher Priority value) than
+the base layer within the same group. Enhancement layer content
+improves quality but can be dropped under constrained conditions.<a href="#section-1.2-1.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
 </section>
 </div>
 </section>
@@ -1588,7 +1611,7 @@ START_GROUP_OFFSET = 900  // Start 900 groups behind live (30 min at 2s groups)
 <a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-max_subscription_subgroups-" class="section-name selfRef">MAX_SUBSCRIPTION_SUBGROUPS Parameter</a>
         </h3>
 <p id="section-3.4-1">The MAX_SUBSCRIPTION_SUBGROUPS parameter specifies the initial limit on
-the number of subgroup streams that can be in flight for this
+the number of subgroup streams that can be opened for this
 subscription.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.4-2">
 <pre>
@@ -1696,15 +1719,15 @@ expires before the subgroup can be opened, the publisher skips it
 and moves to the next.<a href="#section-4.1.1-6.2.1" class="pilcrow">¶</a></p>
 </li>
             <li id="section-4.1.1-6.3">
-              <p id="section-4.1.1-6.3.1">Base layer subgroups are exempt from timeout. If the base layer
+              <p id="section-4.1.1-6.3.1">The base layer is exempt from timeout. If the base layer
 cannot be opened due to the limit, the publisher waits indefinitely.<a href="#section-4.1.1-6.3.1" class="pilcrow">¶</a></p>
 </li>
           </ol>
 <p id="section-4.1.1-7">The subscriber grants more capacity by sending MAX_SUBSCRIPTION_SUBGROUPS
-with a higher value. A recommended approach: when a base layer subgroup
+with a higher value. A recommended approach: when the base layer
 completes, set Max Subgroup Count to the initial value plus the total
 number of subgroup streams received (completed or reset) so far. This
-batches credit grants efficiently while ensuring base layer is never
+batches credit grants efficiently while ensuring the base layer is never
 blocked by the limit.<a href="#section-4.1.1-7" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1840,51 +1863,60 @@ Group 5008, Object 0:
         </h3>
 <p id="section-7.1-1">A MODE=VOD subscription has "fill" semantics similar to FETCH: all
 objects in the requested range are delivered and/or retrieved. The
-publisher is responsible for delivering every object between the Start
-and End filters, retrieving from upstream or cache as necessary. Gaps
-in delivery indicate objects that do not exist, not objects that were
-skipped.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+publisher is responsible for attempting delivery for every object
+between the Start and End filters, retrieving from upstream or cache
+as necessary. Gaps in delivery indicate objects that do not exist at
+the original publisher, or objects that were dropped by the immediate
+publisher due to congestion.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="subgroup-streams">
+<div id="delivery-constraints">
 <section id="section-7.2">
-        <h3 id="name-subgroup-stream-constraints">
-<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-subgroup-stream-constraints" class="section-name selfRef">Subgroup Stream Constraints</a>
+        <h3 id="name-delivery-constraints">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-delivery-constraints" class="section-name selfRef">Delivery Constraints</a>
         </h3>
-<p id="section-7.2-1">For a given publisher priority level, the following constraints apply:<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+<p id="section-7.2-1">Content is organized by group, priority, and object ID. The following
+constraints apply regardless of delivery mechanism:<a href="#section-7.2-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-7.2-2">
 <li id="section-7.2-2.1">
-            <p id="section-7.2-2.1.1"><strong>Within a group</strong>: At most one subgroup at that priority level can
-be open for writing at a time. Subgroups at the same priority are
-serialized, ordered by their first object ID.<a href="#section-7.2-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-7.2-2.1.1"><strong>Within a priority level</strong>: At most one group's content at that
+priority can be in-flight at a time. Within a group, content at the
+same priority is serialized by object ID. For subgroups, the first
+object ID in the subgroup is used for comparison.<a href="#section-7.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-7.2-2.2">
-            <p id="section-7.2-2.2.1"><strong>Across groups</strong>: A publisher <span class="bcp14">MUST NOT</span> begin any subgroup of group
-N+1 at priority P until all subgroups of group N at priority P have
-completed or been reset.<a href="#section-7.2-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-7.2-2.2.1"><strong>Across groups</strong>: A publisher <span class="bcp14">MUST NOT</span> begin delivering content
+from group N+1 at priority P until all content from group N at
+priority P has completed or been abandoned.<a href="#section-7.2-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-7.2-2.3">
+            <p id="section-7.2-2.3.1"><strong>Base layer first</strong>: Within a group, the publisher <span class="bcp14">MUST NOT</span> begin
+delivery of enhancement layers until the base layer has started.<a href="#section-7.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
-<p id="section-7.2-3">These constraints apply independently to each priority level. Different
-priority levels may be delivering different groups and subgroups
-concurrently.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
+<p id="section-7.2-3">Different priority levels operate independently and can be delivering
+different groups concurrently.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="subgroup-ordering">
+<div id="pacing">
 <section id="section-7.3">
-        <h3 id="name-subgroup-ordering-within-a-">
-<a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-subgroup-ordering-within-a-" class="section-name selfRef">Subgroup Ordering Within a Group</a>
+        <h3 id="name-pacing">
+<a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-pacing" class="section-name selfRef">Pacing</a>
         </h3>
-<p id="section-7.3-1">Within a group, the publisher <span class="bcp14">MUST NOT</span> begin delivery of enhancement
-layer subgroups (lower priority) until the base layer subgroup (highest
-priority) for that group has started.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
-<p id="section-7.3-2">This ensures the subscriber always has the essential content before
-enhancement content for any given group.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
+<p id="section-7.3-1">When GROUP_INTERVAL is specified (via parameter or Track extension),
+the publisher <span class="bcp14">SHOULD</span> wait at least GROUP_INTERVAL milliseconds between
+starting delivery of consecutive groups.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+<p id="section-7.3-2">The interval is measured from when delivery of group N begins (first
+content at the base layer starts) to when delivery of group N+1 begins.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
+<p id="section-7.3-3">If delivery of a group takes longer than GROUP_INTERVAL (due to network
+conditions or content size), the publisher begins the next group
+immediately upon the base layer completing.<a href="#section-7.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="stream-credit">
+<div id="stream-delivery">
 <section id="section-7.4">
-        <h3 id="name-stream-credit-limits">
-<a href="#section-7.4" class="section-number selfRef">7.4. </a><a href="#name-stream-credit-limits" class="section-name selfRef">Stream Credit Limits</a>
+        <h3 id="name-stream-delivery">
+<a href="#section-7.4" class="section-number selfRef">7.4. </a><a href="#name-stream-delivery" class="section-name selfRef">Stream Delivery</a>
         </h3>
 <p id="section-7.4-1">QUIC MAX_STREAMS provides connection-wide flow control, while
 MAX_SUBSCRIPTION_SUBGROUPS (<a href="#max-sub-subgroups-param" class="auto internal xref">Section 3.4</a>) provides
@@ -1900,22 +1932,15 @@ waits for the subscriber to grant more credit.<a href="#section-7.4-2" class="pi
 available.<a href="#section-7.4-4.1.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-7.4-4.2">
-            <p id="section-7.4-4.2.1">If DELIVERY_TIMEOUT is specified and another subgroup is waiting for
-the slot (contention), the timeout clock starts. If the timeout
-expires before the stream can be opened, the publisher skips that
-subgroup and moves to the next.<a href="#section-7.4-4.2.1" class="pilcrow">¶</a></p>
+            <p id="section-7.4-4.2.1">If DELIVERY_TIMEOUT is specified, timeout behavior applies as
+described in <a href="#timeout" class="auto internal xref">Section 7.7</a>.<a href="#section-7.4-4.2.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-7.4-4.3">
-            <p id="section-7.4-4.3.1">Base layer subgroups are exempt from timeout. If the base layer
-cannot be opened due to stream credit limits, the publisher waits
-indefinitely for credit.<a href="#section-7.4-4.3.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-7.4-4.4">
-            <p id="section-7.4-4.4.1">The subscriber grants more credit by consuming completed streams.
+            <p id="section-7.4-4.3.1">The subscriber grants more credit by consuming completed streams.
 As the publisher completes subgroup streams (sends FIN) and the
 subscriber consumes them, the subscriber sends MAX_STREAMS updates
 (for QUIC-level credit) and MAX_SUBSCRIPTION_SUBGROUPS messages
-(for subscription-level credit) to allow more streams to be opened.<a href="#section-7.4-4.4.1" class="pilcrow">¶</a></p>
+(for subscription-level credit) to allow more streams to be opened.<a href="#section-7.4-4.3.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
 <p id="section-7.4-5">This allows the subscriber to indirectly control delivery rate by
@@ -1932,67 +1957,39 @@ control backpressure does not apply. Datagrams are sent immediately
 without waiting for subscriber acknowledgment.<a href="#section-7.5-1" class="pilcrow">¶</a></p>
 <p id="section-7.5-2">However, congestion control and send-side queueing still affect
 datagram delivery. When the QUIC send buffer is full due to congestion,
-datagrams may be queued.<a href="#section-7.5-2" class="pilcrow">¶</a></p>
-<p id="section-7.5-3">Datagrams follow the same constraints as subgroups, organized by group
-and publisher priority:<a href="#section-7.5-3" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-7.5-4">
-<li id="section-7.5-4.1">
-            <p id="section-7.5-4.1.1"><strong>Within a group</strong>: At most one subgroup's datagrams at a given
-priority level can be in flight at a time. Subgroups at the same
-priority are serialized, ordered by their first object ID.<a href="#section-7.5-4.1.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-7.5-4.2">
-            <p id="section-7.5-4.2.1"><strong>Across groups</strong>: A publisher <span class="bcp14">MUST NOT</span> begin any subgroup's datagrams
-of group N+1 at priority P until all subgroups of group N at priority
-P have completed or been reset.<a href="#section-7.5-4.2.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-7.5-4.3">
-            <p id="section-7.5-4.3.1"><strong>Priority ordering within a group</strong>: The publisher <span class="bcp14">MUST NOT</span> begin
-delivery of lower-priority datagrams until the highest-priority
-datagrams for that group have started.<a href="#section-7.5-4.3.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-7.5-4.4">
-            <p id="section-7.5-4.4.1"><strong>Pacing applies</strong>: GROUP_INTERVAL controls the rate at which groups
-are started, regardless of delivery mechanism.<a href="#section-7.5-4.4.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-7.5-4.5">
-            <p id="section-7.5-4.5.1"><strong>Timeout behavior</strong>: DELIVERY_TIMEOUT applies to queued datagrams.
-If a datagram remains in the send queue longer than DELIVERY_TIMEOUT
-due to congestion, the publisher <span class="bcp14">MAY</span> drop the datagram rather than
-sending it late. This applies to low-priority datagrams; highest-
-priority (base layer) datagrams <span class="bcp14">SHOULD NOT</span> be dropped due to timeout.<a href="#section-7.5-4.5.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-7.5-4.6">
-            <p id="section-7.5-4.6.1"><strong>Fill semantics</strong>: The publisher attempts to deliver all objects.
-Datagrams dropped due to congestion or timeout represent gaps in
-delivery, similar to subgroup stream resets.<a href="#section-7.5-4.6.1" class="pilcrow">¶</a></p>
-</li>
-        </ol>
+datagrams can be queued.<a href="#section-7.5-2" class="pilcrow">¶</a></p>
+<p id="section-7.5-3">The delivery constraints in <a href="#delivery-constraints" class="auto internal xref">Section 7.2</a> apply to
+datagrams.  Additionally, DELIVERY_TIMEOUT applies to queued
+enhancement layer datagrams.  If an enhancement layer datagram remains
+in the send queue longer than DELIVERY_TIMEOUT due to congestion, the
+publisher <span class="bcp14">MAY</span> drop the datagram rather than sending it late.<a href="#section-7.5-3" class="pilcrow">¶</a></p>
+<p id="section-7.5-4">Note: Tracks designed for VOD delivery <span class="bcp14">SHOULD NOT</span> use datagrams for
+base layer content. Datagrams are inherently unreliable and can be lost
+due to network conditions, but VOD mode expects the base layer to be
+delivered reliably. Datagrams might be appropriate for enhancement
+layers where loss is acceptable.<a href="#section-7.5-4" class="pilcrow">¶</a></p>
 <div id="example-audio-track-with-datagrams">
 <section id="section-7.5.1">
           <h4 id="name-example-audio-track-with-da">
 <a href="#section-7.5.1" class="section-number selfRef">7.5.1. </a><a href="#name-example-audio-track-with-da" class="section-name selfRef">Example: Audio Track with Datagrams</a>
           </h4>
-<p id="section-7.5.1-1">Consider an audio track with 50 subgroups per 1-second group, each
-subgroup containing one datagram, all at priority 64:<a href="#section-7.5.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.5.1-1">Consider an audio track with 50 objects per 1-second group, each
+delivered as a datagram, all at priority 64:<a href="#section-7.5.1-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-7.5.1-2">
 <pre>
 GROUP_INTERVAL = 1000ms (1x playback)
 DELIVERY_TIMEOUT = 500ms
 
 T=0ms:    Begin Group 0
-          Send SG0's datagram, then SG1's, then SG2's, ...
+          Send Object 0, then Object 1, then Object 2, ...
           (serialized within group, same priority)
 T=1000ms: Begin Group 1
-          All G0 datagrams must be sent/dropped first
-          If G0 datagrams still queued &gt; 500ms, drop them
+          G0 objects are sent/dropped first
+          If G0 objects still queued &gt; 500ms, drop them
 T=2000ms: Begin Group 2
           ...
 </pre><a href="#section-7.5.1-2" class="pilcrow">¶</a>
 </div>
-<p id="section-7.5.1-3">For audio delivered via datagrams, late packets are often useless for
-playback, so dropping them under congestion is preferable to delivering
-them late.<a href="#section-7.5.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2023,129 +2020,97 @@ their starting points based on media timestamps.<a href="#section-7.6-3.3.1" cla
         </ul>
 <p id="section-7.6-4">For example, if video has 2-second groups and audio has 1-second groups,
 setting video GROUP_INTERVAL=2000 and audio GROUP_INTERVAL=1000 delivers
-both at 1x realtime, but the subscriber may need to pause one track
+both at 1x realtime, but the subscriber might need to pause one track
 if they drift apart due to network conditions.<a href="#section-7.6-4" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="pacing">
-<section id="section-7.7">
-        <h3 id="name-pacing">
-<a href="#section-7.7" class="section-number selfRef">7.7. </a><a href="#name-pacing" class="section-name selfRef">Pacing</a>
-        </h3>
-<p id="section-7.7-1">When GROUP_INTERVAL is specified (via parameter or Track extension),
-the publisher <span class="bcp14">SHOULD</span> wait at least GROUP_INTERVAL milliseconds between
-starting delivery of consecutive groups.<a href="#section-7.7-1" class="pilcrow">¶</a></p>
-<p id="section-7.7-2">The interval is measured from when delivery of group N begins (first
-subgroup starts) to when delivery of group N+1 begins.<a href="#section-7.7-2" class="pilcrow">¶</a></p>
-<p id="section-7.7-3">If delivery of a group takes longer than GROUP_INTERVAL (due to network
-conditions or content size), the publisher begins the next group
-immediately upon the base layer completing.<a href="#section-7.7-3" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="backpressure">
-<section id="section-7.8">
-        <h3 id="name-backpressure">
-<a href="#section-7.8" class="section-number selfRef">7.8. </a><a href="#name-backpressure" class="section-name selfRef">Backpressure</a>
-        </h3>
-<p id="section-7.8-1">When the subscriber is reading slowly (due to playback buffering,
-application processing, or network congestion), the publisher pauses
-delivery. This is the natural result of QUIC flow control or congestion
-control blocking the sending streams.<a href="#section-7.8-1" class="pilcrow">¶</a></p>
-<p id="section-7.8-2">For MODE=VOD subscriptions without DELIVERY_TIMEOUT, the publisher
-waits indefinitely for the subscriber to consume data. No content
-is dropped.<a href="#section-7.8-2" class="pilcrow">¶</a></p>
-<p id="section-7.8-3">When DELIVERY_TIMEOUT is specified, slow subgroups may be reset as
-described in <a href="#timeout" class="auto internal xref">Section 7.9</a>. However, the highest-priority subgroup
-(base layer) is never timed out - the publisher continues to wait
-for the subscriber to read it.<a href="#section-7.8-3" class="pilcrow">¶</a></p>
-</section>
-</div>
 <div id="timeout">
-<section id="section-7.9">
+<section id="section-7.7">
         <h3 id="name-timeout-semantics">
-<a href="#section-7.9" class="section-number selfRef">7.9. </a><a href="#name-timeout-semantics" class="section-name selfRef">Timeout Semantics</a>
+<a href="#section-7.7" class="section-number selfRef">7.7. </a><a href="#name-timeout-semantics" class="section-name selfRef">Timeout Semantics</a>
         </h3>
-<p id="section-7.9-1">DELIVERY_TIMEOUT, when used with MODE=VOD, has refined semantics to
-enable prioritized delivery under constrained conditions.<a href="#section-7.9-1" class="pilcrow">¶</a></p>
+<p id="section-7.7-1">DELIVERY_TIMEOUT, when used with MODE=VOD, has refined semantics to
+enable prioritized delivery under constrained conditions. This section
+describes timeout behavior for stream-based delivery; datagram timeout
+behavior is described in <a href="#datagram-delivery" class="auto internal xref">Section 7.5</a>.<a href="#section-7.7-1" class="pilcrow">¶</a></p>
 <div id="timeout-activation">
-<section id="section-7.9.1">
+<section id="section-7.7.1">
           <h4 id="name-timeout-activation">
-<a href="#section-7.9.1" class="section-number selfRef">7.9.1. </a><a href="#name-timeout-activation" class="section-name selfRef">Timeout Activation</a>
+<a href="#section-7.7.1" class="section-number selfRef">7.7.1. </a><a href="#name-timeout-activation" class="section-name selfRef">Timeout Activation</a>
           </h4>
-<p id="section-7.9.1-1">The DELIVERY_TIMEOUT clock for a subgroup starts only when there is
-contention - that is, when another subgroup needs the slot that the
-current subgroup is occupying.<a href="#section-7.9.1-1" class="pilcrow">¶</a></p>
-<p id="section-7.9.1-2">Contention occurs in two scenarios:<a href="#section-7.9.1-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-7.9.1-3">
-<li id="section-7.9.1-3.1">
-              <p id="section-7.9.1-3.1.1"><strong>Within a group</strong>: Multiple subgroups at the same priority level
-are serialized by first object ID. If subgroup A is in flight and
-subgroup B (same priority, higher first object ID) is ready to
-start, B is blocked by A. Timeout starts on A.<a href="#section-7.9.1-3.1.1" class="pilcrow">¶</a></p>
+<p id="section-7.7.1-1">The DELIVERY_TIMEOUT clock for content at a priority level starts only
+when there is contention - that is, when other content needs the slot
+that the current content is occupying.<a href="#section-7.7.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.7.1-2">Contention occurs in two scenarios:<a href="#section-7.7.1-2" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-7.7.1-3">
+<li id="section-7.7.1-3.1">
+              <p id="section-7.7.1-3.1.1"><strong>Within a group</strong>: Content at the same priority level is serialized
+by first object ID. If content A is in-flight and content B (same
+priority, higher first object ID) is ready to start, B is blocked
+by A. Timeout starts on A.  This does not apply within a single
+subgroup.<a href="#section-7.7.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-7.9.1-3.2">
-              <p id="section-7.9.1-3.2.1"><strong>Across groups</strong>: A subgroup from group N+1 at priority P is ready
-to start, but a subgroup from group N at priority P is still in
-flight. Timeout starts on the group N subgroup.<a href="#section-7.9.1-3.2.1" class="pilcrow">¶</a></p>
+            <li id="section-7.7.1-3.2">
+              <p id="section-7.7.1-3.2.1"><strong>Across groups</strong>: Content from group N+1 at priority P is ready
+to start, but content from group N at priority P is still in
+flight. Timeout starts on the group N content.<a href="#section-7.7.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
           </ol>
-<p id="section-7.9.1-4">If no subgroup is waiting for the slot, the in-flight subgroup
-continues without timeout pressure.<a href="#section-7.9.1-4" class="pilcrow">¶</a></p>
-<p id="section-7.9.1-5">When a new group begins:<a href="#section-7.9.1-5" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-7.9.1-6">
-<li id="section-7.9.1-6.1">
-              <p id="section-7.9.1-6.1.1">The publisher begins delivery of the new group's base layer
-(highest priority subgroup).<a href="#section-7.9.1-6.1.1" class="pilcrow">¶</a></p>
+<p id="section-7.7.1-4">If nothing is waiting for the slot, the in-flight content continues
+without timeout pressure.<a href="#section-7.7.1-4" class="pilcrow">¶</a></p>
+<p id="section-7.7.1-5">When a new group begins:<a href="#section-7.7.1-5" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-7.7.1-6">
+<li id="section-7.7.1-6.1">
+              <p id="section-7.7.1-6.1.1">The publisher begins delivery of the new group's base layer.<a href="#section-7.7.1-6.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-7.9.1-6.2">
-              <p id="section-7.9.1-6.2.1">Enhancement layer subgroups of the new group wait for their
-priority level to become available (no in-flight subgroups at
-that priority from the previous group).<a href="#section-7.9.1-6.2.1" class="pilcrow">¶</a></p>
+            <li id="section-7.7.1-6.2">
+              <p id="section-7.7.1-6.2.1">Enhancement layers of the new group wait for their priority level
+to become available (no in-flight content at that priority from the
+previous group).<a href="#section-7.7.1-6.2.1" class="pilcrow">¶</a></p>
 </li>
           </ol>
 </section>
 </div>
 <div id="base-immunity">
-<section id="section-7.9.2">
+<section id="section-7.7.2">
           <h4 id="name-base-layer-immunity">
-<a href="#section-7.9.2" class="section-number selfRef">7.9.2. </a><a href="#name-base-layer-immunity" class="section-name selfRef">Base Layer Immunity</a>
+<a href="#section-7.7.2" class="section-number selfRef">7.7.2. </a><a href="#name-base-layer-immunity" class="section-name selfRef">Base Layer Immunity</a>
           </h4>
-<p id="section-7.9.2-1">The highest-priority subgroup (lowest Publisher Priority value) within
-each group <span class="bcp14">MUST NOT</span> be timed out. This subgroup contains essential
-content required for playback.<a href="#section-7.9.2-1" class="pilcrow">¶</a></p>
-<p id="section-7.9.2-2">If the base layer cannot be delivered within available bandwidth, the
-subscriber should switch to a lower-quality track.<a href="#section-7.9.2-2" class="pilcrow">¶</a></p>
+<p id="section-7.7.2-1">The base layer within each group <span class="bcp14">MUST NOT</span> be timed out. It
+contains essential content required for playback.<a href="#section-7.7.2-1" class="pilcrow">¶</a></p>
+<p id="section-7.7.2-2">If the base layer cannot be delivered within available bandwidth, the
+subscriber <span class="bcp14">SHOULD</span> switch to a lower-quality track.<a href="#section-7.7.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="timeout-behavior">
-<section id="section-7.9.3">
+<section id="section-7.7.3">
           <h4 id="name-timeout-behavior">
-<a href="#section-7.9.3" class="section-number selfRef">7.9.3. </a><a href="#name-timeout-behavior" class="section-name selfRef">Timeout Behavior</a>
+<a href="#section-7.7.3" class="section-number selfRef">7.7.3. </a><a href="#name-timeout-behavior" class="section-name selfRef">Timeout Behavior</a>
           </h4>
-<p id="section-7.9.3-1">When a subgroup stream's timeout expires:<a href="#section-7.9.3-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-7.9.3-2">
-<li id="section-7.9.3-2.1">
-              <p id="section-7.9.3-2.1.1">The publisher resets the stream<a href="#section-7.9.3-2.1.1" class="pilcrow">¶</a></p>
+<p id="section-7.7.3-1">When a stream's timeout expires:<a href="#section-7.7.3-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-7.7.3-2">
+<li id="section-7.7.3-2.1">
+              <p id="section-7.7.3-2.1.1">The publisher resets the stream<a href="#section-7.7.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-7.9.3-2.2">
-              <p id="section-7.9.3-2.2.1">When all subgroups at that priority level have completed or been
-reset, the priority level becomes available for the next group<a href="#section-7.9.3-2.2.1" class="pilcrow">¶</a></p>
+            <li id="section-7.7.3-2.2">
+              <p id="section-7.7.3-2.2.1">When all content at that priority level has completed or been
+abandoned, the priority level becomes available for the next group<a href="#section-7.7.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-7.9.3-2.3">
-              <p id="section-7.9.3-2.3.1">The publisher may begin subgroups at that priority for the next group<a href="#section-7.9.3-2.3.1" class="pilcrow">¶</a></p>
+            <li id="section-7.7.3-2.3">
+              <p id="section-7.7.3-2.3.1">The publisher can begin content at that priority for the next group<a href="#section-7.7.3-2.3.1" class="pilcrow">¶</a></p>
 </li>
           </ol>
 </section>
 </div>
 <div id="timeout-example">
-<section id="section-7.9.4">
+<section id="section-7.7.4">
           <h4 id="name-example-2">
-<a href="#section-7.9.4" class="section-number selfRef">7.9.4. </a><a href="#name-example-2" class="section-name selfRef">Example</a>
+<a href="#section-7.7.4" class="section-number selfRef">7.7.4. </a><a href="#name-example-2" class="section-name selfRef">Example</a>
           </h4>
-<p id="section-7.9.4-1">Consider a track with 2 subgroups per group: SG0 (priority 0, base) and
+<p id="section-7.7.4-1">Consider a track with 2 subgroups per group: SG0 (priority 0, base) and
 SG1 (priority 128, enhancement). GROUP_INTERVAL = 2000ms,
-DELIVERY_TIMEOUT = 1000ms.<a href="#section-7.9.4-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-7.9.4-2">
+DELIVERY_TIMEOUT = 1000ms.<a href="#section-7.7.4-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-7.7.4-2">
 <pre>
 T=0ms:    Begin Group 0
           Start G0/SG0 (base)
@@ -2169,47 +2134,62 @@ T=4000ms: GROUP_INTERVAL elapsed, begin Group 2
           G2/SG1 wants to start but G1/SG1 occupies the slot
           Start timeout clock on G1/SG1 (contention)
           ...
-</pre><a href="#section-7.9.4-2" class="pilcrow">¶</a>
+</pre><a href="#section-7.7.4-2" class="pilcrow">¶</a>
 </div>
-<p id="section-7.9.4-3">In this example, the base layer (SG0) flows continuously at the
+<p id="section-7.7.4-3">In this example, the base layer (SG0) flows continuously at the
 requested rate. The enhancement layer (SG1) is reset when it cannot
-keep up, resulting in degraded but continuous playback.<a href="#section-7.9.4-3" class="pilcrow">¶</a></p>
+keep up, resulting in degraded but continuous playback.<a href="#section-7.7.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
+</section>
+</div>
+<div id="backpressure">
+<section id="section-7.8">
+        <h3 id="name-backpressure">
+<a href="#section-7.8" class="section-number selfRef">7.8. </a><a href="#name-backpressure" class="section-name selfRef">Backpressure</a>
+        </h3>
+<p id="section-7.8-1">When the subscriber is reading slowly (due to playback buffering,
+application processing, or network congestion), QUIC flow control
+blocks individual streams.<a href="#section-7.8-1" class="pilcrow">¶</a></p>
+<p id="section-7.8-2">For MODE=VOD subscriptions without DELIVERY_TIMEOUT, the publisher
+waits indefinitely for the subscriber to consume data.<a href="#section-7.8-2" class="pilcrow">¶</a></p>
+<p id="section-7.8-3">When DELIVERY_TIMEOUT is specified, timeout behavior applies as
+described above. Timeouts operate independently per priority level -
+a blocked base layer does not suspend enhancement layer timeouts.<a href="#section-7.8-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="pause-resume">
-<section id="section-7.10">
+<section id="section-7.9">
         <h3 id="name-pause-and-resume">
-<a href="#section-7.10" class="section-number selfRef">7.10. </a><a href="#name-pause-and-resume" class="section-name selfRef">Pause and Resume</a>
+<a href="#section-7.9" class="section-number selfRef">7.9. </a><a href="#name-pause-and-resume" class="section-name selfRef">Pause and Resume</a>
         </h3>
-<p id="section-7.10-1">Subscribers can pause and resume VOD delivery at any time using
-REQUEST_UPDATE with the Forward parameter:<a href="#section-7.10-1" class="pilcrow">¶</a></p>
+<p id="section-7.9-1">Subscribers can pause and resume VOD delivery at any time using
+REQUEST_UPDATE with the Forward parameter:<a href="#section-7.9-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-7.10-2.1">
-            <p id="section-7.10-2.1.1">Forward = 0: Pause delivery. The publisher stops sending new objects
+<li class="normal" id="section-7.9-2.1">
+            <p id="section-7.9-2.1.1">Forward = 0: Pause delivery. The publisher stops sending new objects
 but does not reset in-flight streams.  All delivery timeout timers are
-paused.<a href="#section-7.10-2.1.1" class="pilcrow">¶</a></p>
+paused.<a href="#section-7.9-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-7.10-2.2">
-            <p id="section-7.10-2.2.1">Forward = 1: Resume delivery. The publisher continues from where it
-paused and restarts any delivery timers.<a href="#section-7.10-2.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-7.9-2.2">
+            <p id="section-7.9-2.2.1">Forward = 1: Resume delivery. The publisher continues from where it
+paused and restarts any delivery timers.<a href="#section-7.9-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-7.10-3">This allows subscribers to implement pause/play functionality without
-tearing down the subscription, and to manage buffer depth dynamically.<a href="#section-7.10-3" class="pilcrow">¶</a></p>
+<p id="section-7.9-3">This allows subscribers to implement pause/play functionality without
+tearing down the subscription, and to manage buffer depth dynamically.<a href="#section-7.9-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="catch-up-after-pause">
-<section id="section-7.11">
+<section id="section-7.10">
         <h3 id="name-catching-up-after-pause">
-<a href="#section-7.11" class="section-number selfRef">7.11. </a><a href="#name-catching-up-after-pause" class="section-name selfRef">Catching Up After Pause</a>
+<a href="#section-7.10" class="section-number selfRef">7.10. </a><a href="#name-catching-up-after-pause" class="section-name selfRef">Catching Up After Pause</a>
         </h3>
-<p id="section-7.11-1">When a live subscription is paused with REQUEST_UPDATE Forward=0, the
+<p id="section-7.10-1">When a live subscription is paused with REQUEST_UPDATE Forward=0, the
 subscriber falls behind the live edge. Upon resuming, the subscriber
-may wish to catch up to live at an accelerated rate.<a href="#section-7.11-1" class="pilcrow">¶</a></p>
-<p id="section-7.11-2">To catch up, the subscriber sends REQUEST_UPDATE with:<a href="#section-7.11-2" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-7.11-3">
+might wish to catch up to live at an accelerated rate.<a href="#section-7.10-1" class="pilcrow">¶</a></p>
+<p id="section-7.10-2">To catch up, the subscriber sends REQUEST_UPDATE with:<a href="#section-7.10-2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-7.10-3">
 <pre>
 REQUEST_UPDATE {
   Request ID,
@@ -2220,42 +2200,42 @@ REQUEST_UPDATE {
     GROUP_INTERVAL = &lt;accelerated rate&gt;  // Optional
     MAX_SUBSCRIPTION_SUBGROUPS = N       // Optional
 }
-</pre><a href="#section-7.11-3" class="pilcrow">¶</a>
+</pre><a href="#section-7.10-3" class="pilcrow">¶</a>
 </div>
-<p id="section-7.11-4">The START_GROUP_OFFSET parameter specifies where to resume:<a href="#section-7.11-4" class="pilcrow">¶</a></p>
+<p id="section-7.10-4">The START_GROUP_OFFSET parameter specifies where to resume:<a href="#section-7.10-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-7.11-5.1">
-            <p id="section-7.11-5.1.1">START_GROUP_OFFSET = 0: Resume from the current position (typical case)<a href="#section-7.11-5.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-7.10-5.1">
+            <p id="section-7.10-5.1.1">START_GROUP_OFFSET = 0: Resume from the current position (typical case)<a href="#section-7.10-5.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-7.11-5.2">
-            <p id="section-7.11-5.2.1">START_GROUP_OFFSET = N: Restart N groups behind live<a href="#section-7.11-5.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-7.10-5.2">
+            <p id="section-7.10-5.2.1">START_GROUP_OFFSET = N: Restart N groups behind live<a href="#section-7.10-5.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-7.11-6">This switches the subscription to VOD mode, enabling:<a href="#section-7.11-6" class="pilcrow">¶</a></p>
+<p id="section-7.10-6">This switches the subscription to VOD mode, enabling:<a href="#section-7.10-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-7.11-7.1">
-            <p id="section-7.11-7.1.1">Fill semantics for the backlog of content<a href="#section-7.11-7.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-7.10-7.1">
+            <p id="section-7.10-7.1.1">Fill semantics for the backlog of content<a href="#section-7.10-7.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-7.11-7.2">
-            <p id="section-7.11-7.2.1">Paced delivery at the specified GROUP_INTERVAL (faster than realtime)<a href="#section-7.11-7.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-7.10-7.2">
+            <p id="section-7.10-7.2.1">Paced delivery at the specified GROUP_INTERVAL (faster than realtime)<a href="#section-7.10-7.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-7.11-7.3">
-            <p id="section-7.11-7.3.1">Subgroup stream constraints and timeout behavior as specified in
-<a href="#delivery" class="auto internal xref">Section 7</a><a href="#section-7.11-7.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-7.10-7.3">
+            <p id="section-7.10-7.3.1">Delivery constraints and timeout behavior as specified in
+<a href="#delivery-constraints" class="auto internal xref">Section 7.2</a> and <a href="#timeout" class="auto internal xref">Section 7.7</a><a href="#section-7.10-7.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-7.11-7.4">
-            <p id="section-7.11-7.4.1">Subgroup flow control with count reset (see <a href="#max-sub-subgroups-param" class="auto internal xref">Section 3.4</a>)<a href="#section-7.11-7.4.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-7.10-7.4">
+            <p id="section-7.10-7.4.1">Subgroup flow control with count reset (see <a href="#max-sub-subgroups-param" class="auto internal xref">Section 3.4</a>)<a href="#section-7.10-7.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-7.11-8">When the subscriber catches up to the live edge, the publisher sends
+<p id="section-7.10-8">When the subscriber catches up to the live edge, the publisher sends
 REQUEST_UPDATE with MODE=LIVE as described in <a href="#publisher-transition" class="auto internal xref">Section 8.1</a>,
-and the subscription returns to live delivery.<a href="#section-7.11-8" class="pilcrow">¶</a></p>
+and the subscription returns to live delivery.<a href="#section-7.10-8" class="pilcrow">¶</a></p>
 <div id="example-flow">
-<section id="section-7.11.1">
+<section id="section-7.10.1">
           <h4 id="name-example-flow">
-<a href="#section-7.11.1" class="section-number selfRef">7.11.1. </a><a href="#name-example-flow" class="section-name selfRef">Example Flow</a>
+<a href="#section-7.10.1" class="section-number selfRef">7.10.1. </a><a href="#name-example-flow" class="section-name selfRef">Example Flow</a>
           </h4>
-<div class="alignLeft art-text artwork" id="section-7.11.1-1">
+<div class="alignLeft art-text artwork" id="section-7.10.1-1">
 <pre>
 Subscriber                         Publisher
     |                                  |
@@ -2293,64 +2273,64 @@ Subscriber                         Publisher
     |                                  |
     |  Objects (live mode)             |
     |&lt;---------------------------------|
-</pre><a href="#section-7.11.1-1" class="pilcrow">¶</a>
+</pre><a href="#section-7.10.1-1" class="pilcrow">¶</a>
 </div>
-<p id="section-7.11.1-2">If GROUP_INTERVAL is omitted when resuming with MODE=VOD, the publisher
-delivers the backlog as fast as possible (no pacing).<a href="#section-7.11.1-2" class="pilcrow">¶</a></p>
-<p id="section-7.11.1-3">If START_GROUP_OFFSET is omitted, the subscriber resumes from their
-current position (equivalent to START_GROUP_OFFSET=0).<a href="#section-7.11.1-3" class="pilcrow">¶</a></p>
+<p id="section-7.10.1-2">If GROUP_INTERVAL is omitted when resuming with MODE=VOD, the publisher
+delivers the backlog as fast as possible (no pacing).<a href="#section-7.10.1-2" class="pilcrow">¶</a></p>
+<p id="section-7.10.1-3">If START_GROUP_OFFSET is omitted, the subscriber resumes from their
+current position (equivalent to START_GROUP_OFFSET=0).<a href="#section-7.10.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="delivery-examples">
-<section id="section-7.12">
+<section id="section-7.11">
         <h3 id="name-delivery-examples">
-<a href="#section-7.12" class="section-number selfRef">7.12. </a><a href="#name-delivery-examples" class="section-name selfRef">Delivery Examples</a>
+<a href="#section-7.11" class="section-number selfRef">7.11. </a><a href="#name-delivery-examples" class="section-name selfRef">Delivery Examples</a>
         </h3>
-<p id="section-7.12-1">This section illustrates how subgroup constraints, flow control, timeout,
-and credit granting work together.<a href="#section-7.12-1" class="pilcrow">¶</a></p>
+<p id="section-7.11-1">This section illustrates how delivery constraints, flow control, timeout,
+and credit granting work together.<a href="#section-7.11-1" class="pilcrow">¶</a></p>
 <div id="video-track-example">
-<section id="section-7.12.1">
+<section id="section-7.11.1">
           <h4 id="name-video-track-example">
-<a href="#section-7.12.1" class="section-number selfRef">7.12.1. </a><a href="#name-video-track-example" class="section-name selfRef">Video Track Example</a>
+<a href="#section-7.11.1" class="section-number selfRef">7.11.1. </a><a href="#name-video-track-example" class="section-name selfRef">Video Track Example</a>
           </h4>
-<p id="section-7.12.1-1">Consider a video track with 2 subgroups per group at different priorities:<a href="#section-7.12.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.11.1-1">Consider a video track with 2 subgroups per group at different priorities:<a href="#section-7.11.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-7.12.1-2.1">
-              <p id="section-7.12.1-2.1.1">SG0 at priority 0 (base layer)<a href="#section-7.12.1-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-7.11.1-2.1">
+              <p id="section-7.11.1-2.1.1">SG0 at priority 0 (base layer)<a href="#section-7.11.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-7.12.1-2.2">
-              <p id="section-7.12.1-2.2.1">SG1 at priority 128 (enhancement layer)<a href="#section-7.12.1-2.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-7.11.1-2.2">
+              <p id="section-7.11.1-2.2.1">SG1 at priority 128 (enhancement layer)<a href="#section-7.11.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-7.12.1-3">Since they have different priorities, SG0 and SG1 can be in flight
-concurrently. However, G0/SG0 must complete before G1/SG0 starts, and
-G0/SG1 must complete before G1/SG1 starts (per-priority ordering).<a href="#section-7.12.1-3" class="pilcrow">¶</a></p>
+<p id="section-7.11.1-3">Since they have different priorities, SG0 and SG1 can be in-flight
+concurrently. However, G0/SG0 completes before G1/SG0 starts, and
+G0/SG1 completes before G1/SG1 starts (per-priority ordering).<a href="#section-7.11.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="audio-track-example">
-<section id="section-7.12.2">
+<section id="section-7.11.2">
           <h4 id="name-audio-track-example">
-<a href="#section-7.12.2" class="section-number selfRef">7.12.2. </a><a href="#name-audio-track-example" class="section-name selfRef">Audio Track Example</a>
+<a href="#section-7.11.2" class="section-number selfRef">7.11.2. </a><a href="#name-audio-track-example" class="section-name selfRef">Audio Track Example</a>
           </h4>
-<p id="section-7.12.2-1">Consider an audio track with 50 subgroups per group, all at priority 64:<a href="#section-7.12.2-1" class="pilcrow">¶</a></p>
+<p id="section-7.11.2-1">Consider an audio track with 50 subgroups per group, all at priority 64:<a href="#section-7.11.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-7.12.2-2.1">
-              <p id="section-7.12.2-2.1.1">SG0-SG49 all at priority 64, ordered by first object ID<a href="#section-7.12.2-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-7.11.2-2.1">
+              <p id="section-7.11.2-2.1.1">SG0-SG49 all at priority 64, ordered by first object ID<a href="#section-7.11.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-7.12.2-3">Within Group 0, subgroups are serialized: SG0 completes, then SG1
+<p id="section-7.11.2-3">Within Group 0, subgroups are serialized: SG0 completes, then SG1
 starts, then SG2, etc. Only after all 50 subgroups of Group 0 complete
-(or are reset) can Group 1's subgroups begin.<a href="#section-7.12.2-3" class="pilcrow">¶</a></p>
+(or are reset) can Group 1's subgroups begin.<a href="#section-7.11.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="combined-flow-control-and-credit-example">
-<section id="section-7.12.3">
+<section id="section-7.11.3">
           <h4 id="name-combined-flow-control-and-c">
-<a href="#section-7.12.3" class="section-number selfRef">7.12.3. </a><a href="#name-combined-flow-control-and-c" class="section-name selfRef">Combined Flow Control and Credit Example</a>
+<a href="#section-7.11.3" class="section-number selfRef">7.11.3. </a><a href="#name-combined-flow-control-and-c" class="section-name selfRef">Combined Flow Control and Credit Example</a>
           </h4>
-<div class="alignLeft art-text artwork" id="section-7.12.3-1">
+<div class="alignLeft art-text artwork" id="section-7.11.3-1">
 <pre>
 Setup:
   Track has 2 subgroups: base (pri 0), enhancement (pri 128)
@@ -2397,7 +2377,7 @@ Key observations:
 - Enhancement times out due to ordering contention
 - Credit granted on base completion includes all received streams
 - Max always stays ahead of Count
-</pre><a href="#section-7.12.3-1" class="pilcrow">¶</a>
+</pre><a href="#section-7.11.3-1" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -2546,7 +2526,7 @@ been delivered.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
         <h3 id="name-using-switch">
 <a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-using-switch" class="section-name selfRef">Using SWITCH</a>
         </h3>
-<p id="section-8.4-1">If the SWITCH mechanism is supported, subscribers may use it to
+<p id="section-8.4-1">If the SWITCH mechanism is supported, subscribers can use it to
 atomically transition from VOD to live without managing two
 subscriptions.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
 </section>
