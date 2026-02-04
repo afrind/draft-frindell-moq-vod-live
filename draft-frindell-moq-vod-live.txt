@@ -1111,7 +1111,7 @@ START_GROUP_OFFSET = 900  // Start 900 groups behind live (30 min at 2s groups)
 
 Acknowledgments
 
-   TODO acknowledge.
+   Claude (Anthropic) assisted with drafting and refining this document.
 
 Changelog
 
