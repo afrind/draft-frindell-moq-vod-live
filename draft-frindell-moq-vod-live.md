@@ -71,6 +71,18 @@ This extension enables MOQT to efficiently serve VOD content by:
 
 {::boilerplate bcp14-tagged}
 
+## Terminology
+
+Base Layer:
+: The content at the highest priority (lowest Publisher Priority value)
+  within a group. Base layer content is essential for playback and
+  receives preferential treatment in timeout and delivery decisions.
+
+Enhancement Layer:
+: Any content at lower priority (higher Publisher Priority value) than
+  the base layer within the same group. Enhancement layer content
+  improves quality but can be dropped under constrained conditions.
+
 # Extension Negotiation {#negotiation}
 
 Endpoints negotiate support for this extension during session setup.
@@ -208,7 +220,7 @@ MUST respond with REQUEST_ERROR.
 ## MAX_SUBSCRIPTION_SUBGROUPS Parameter {#max-sub-subgroups-param}
 
 The MAX_SUBSCRIPTION_SUBGROUPS parameter specifies the initial limit on
-the number of subgroup streams that can be in flight for this
+the number of subgroup streams that can be opened for this
 subscription.
 
 ~~~
@@ -294,14 +306,14 @@ When the publisher cannot open a subgroup due to this limit:
    expires before the subgroup can be opened, the publisher skips it
    and moves to the next.
 
-3. Base layer subgroups are exempt from timeout. If the base layer
+3. The base layer is exempt from timeout. If the base layer
    cannot be opened due to the limit, the publisher waits indefinitely.
 
 The subscriber grants more capacity by sending MAX_SUBSCRIPTION_SUBGROUPS
-with a higher value. A recommended approach: when a base layer subgroup
+with a higher value. A recommended approach: when the base layer
 completes, set Max Subgroup Count to the initial value plus the total
 number of subgroup streams received (completed or reset) so far. This
-batches credit grants efficiently while ensuring base layer is never
+batches credit grants efficiently while ensuring the base layer is never
 blocked by the limit.
 
 # Track Extension Headers {#track-extensions}
@@ -397,38 +409,47 @@ Group 5008, Object 0:
 
 A MODE=VOD subscription has "fill" semantics similar to FETCH: all
 objects in the requested range are delivered and/or retrieved. The
-publisher is responsible for delivering every object between the Start
-and End filters, retrieving from upstream or cache as necessary. Gaps
-in delivery indicate objects that do not exist, not objects that were
-skipped.
+publisher is responsible for attempting delivery for every object
+between the Start and End filters, retrieving from upstream or cache
+as necessary. Gaps in delivery indicate objects that do not exist at
+the original publisher, or objects that were dropped by the immediate
+publisher due to congestion.
 
 
-## Subgroup Stream Constraints {#subgroup-streams}
+## Delivery Constraints {#delivery-constraints}
 
-For a given publisher priority level, the following constraints apply:
+Content is organized by group, priority, and object ID. The following
+constraints apply regardless of delivery mechanism:
 
-1. **Within a group**: At most one subgroup at that priority level can
-   be open for writing at a time. Subgroups at the same priority are
-   serialized, ordered by their first object ID.
+1. **Within a priority level**: At most one group's content at that
+   priority can be in-flight at a time. Within a group, content at the
+   same priority is serialized by object ID. For subgroups, the first
+   object ID in the subgroup is used for comparison.
 
-2. **Across groups**: A publisher MUST NOT begin any subgroup of group
-   N+1 at priority P until all subgroups of group N at priority P have
-   completed or been reset.
+2. **Across groups**: A publisher MUST NOT begin delivering content
+   from group N+1 at priority P until all content from group N at
+   priority P has completed or been abandoned.
 
-These constraints apply independently to each priority level. Different
-priority levels may be delivering different groups and subgroups
-concurrently.
+3. **Base layer first**: Within a group, the publisher MUST NOT begin
+   delivery of enhancement layers until the base layer has started.
 
-## Subgroup Ordering Within a Group {#subgroup-ordering}
+Different priority levels operate independently and can be delivering
+different groups concurrently.
 
-Within a group, the publisher MUST NOT begin delivery of enhancement
-layer subgroups (lower priority) until the base layer subgroup (highest
-priority) for that group has started.
+## Pacing {#pacing}
 
-This ensures the subscriber always has the essential content before
-enhancement content for any given group.
+When GROUP_INTERVAL is specified (via parameter or Track extension),
+the publisher SHOULD wait at least GROUP_INTERVAL milliseconds between
+starting delivery of consecutive groups.
 
-## Stream Credit Limits {#stream-credit}
+The interval is measured from when delivery of group N begins (first
+content at the base layer starts) to when delivery of group N+1 begins.
+
+If delivery of a group takes longer than GROUP_INTERVAL (due to network
+conditions or content size), the publisher begins the next group
+immediately upon the base layer completing.
+
+## Stream Delivery {#stream-delivery}
 
 QUIC MAX_STREAMS provides connection-wide flow control, while
 MAX_SUBSCRIPTION_SUBGROUPS ({{max-sub-subgroups-param}}) provides
@@ -444,16 +465,10 @@ While waiting for stream credit:
 1. The publisher queues the subgroup for delivery when credit becomes
    available.
 
-2. If DELIVERY_TIMEOUT is specified and another subgroup is waiting for
-   the slot (contention), the timeout clock starts. If the timeout
-   expires before the stream can be opened, the publisher skips that
-   subgroup and moves to the next.
+2. If DELIVERY_TIMEOUT is specified, timeout behavior applies as
+   described in {{timeout}}.
 
-3. Base layer subgroups are exempt from timeout. If the base layer
-   cannot be opened due to stream credit limits, the publisher waits
-   indefinitely for credit.
-
-4. The subscriber grants more credit by consuming completed streams.
+3. The subscriber grants more credit by consuming completed streams.
    As the publisher completes subgroup streams (sends FIN) and the
    subscriber consumes them, the subscriber sends MAX_STREAMS updates
    (for QUIC-level credit) and MAX_SUBSCRIPTION_SUBGROUPS messages
@@ -470,58 +485,38 @@ without waiting for subscriber acknowledgment.
 
 However, congestion control and send-side queueing still affect
 datagram delivery. When the QUIC send buffer is full due to congestion,
-datagrams may be queued.
+datagrams can be queued.
 
-Datagrams follow the same constraints as subgroups, organized by group
-and publisher priority:
+The delivery constraints in {{delivery-constraints}} apply to
+datagrams.  Additionally, DELIVERY_TIMEOUT applies to queued
+enhancement layer datagrams.  If an enhancement layer datagram remains
+in the send queue longer than DELIVERY_TIMEOUT due to congestion, the
+publisher MAY drop the datagram rather than sending it late.
 
-1. **Within a group**: At most one subgroup's datagrams at a given
-   priority level can be in flight at a time. Subgroups at the same
-   priority are serialized, ordered by their first object ID.
-
-2. **Across groups**: A publisher MUST NOT begin any subgroup's datagrams
-   of group N+1 at priority P until all subgroups of group N at priority
-   P have completed or been reset.
-
-3. **Priority ordering within a group**: The publisher MUST NOT begin
-   delivery of lower-priority datagrams until the highest-priority
-   datagrams for that group have started.
-
-4. **Pacing applies**: GROUP_INTERVAL controls the rate at which groups
-   are started, regardless of delivery mechanism.
-
-5. **Timeout behavior**: DELIVERY_TIMEOUT applies to queued datagrams.
-   If a datagram remains in the send queue longer than DELIVERY_TIMEOUT
-   due to congestion, the publisher MAY drop the datagram rather than
-   sending it late. This applies to low-priority datagrams; highest-
-   priority (base layer) datagrams SHOULD NOT be dropped due to timeout.
-
-6. **Fill semantics**: The publisher attempts to deliver all objects.
-   Datagrams dropped due to congestion or timeout represent gaps in
-   delivery, similar to subgroup stream resets.
+Note: Tracks designed for VOD delivery SHOULD NOT use datagrams for
+base layer content. Datagrams are inherently unreliable and can be lost
+due to network conditions, but VOD mode expects the base layer to be
+delivered reliably. Datagrams might be appropriate for enhancement
+layers where loss is acceptable.
 
 ### Example: Audio Track with Datagrams
 
-Consider an audio track with 50 subgroups per 1-second group, each
-subgroup containing one datagram, all at priority 64:
+Consider an audio track with 50 objects per 1-second group, each
+delivered as a datagram, all at priority 64:
 
 ~~~
 GROUP_INTERVAL = 1000ms (1x playback)
 DELIVERY_TIMEOUT = 500ms
 
 T=0ms:    Begin Group 0
-          Send SG0's datagram, then SG1's, then SG2's, ...
+          Send Object 0, then Object 1, then Object 2, ...
           (serialized within group, same priority)
 T=1000ms: Begin Group 1
-          All G0 datagrams must be sent/dropped first
-          If G0 datagrams still queued > 500ms, drop them
+          G0 objects are sent/dropped first
+          If G0 objects still queued > 500ms, drop them
 T=2000ms: Begin Group 2
           ...
 ~~~
-
-For audio delivered via datagrams, late packets are often useless for
-playback, so dropping them under congestion is preferable to delivering
-them late.
 
 ## Multi-Track Synchronization {#multi-track-sync}
 
@@ -543,89 +538,61 @@ can be achieved by:
 
 For example, if video has 2-second groups and audio has 1-second groups,
 setting video GROUP_INTERVAL=2000 and audio GROUP_INTERVAL=1000 delivers
-both at 1x realtime, but the subscriber may need to pause one track
+both at 1x realtime, but the subscriber might need to pause one track
 if they drift apart due to network conditions.
-
-## Pacing {#pacing}
-
-When GROUP_INTERVAL is specified (via parameter or Track extension),
-the publisher SHOULD wait at least GROUP_INTERVAL milliseconds between
-starting delivery of consecutive groups.
-
-The interval is measured from when delivery of group N begins (first
-subgroup starts) to when delivery of group N+1 begins.
-
-If delivery of a group takes longer than GROUP_INTERVAL (due to network
-conditions or content size), the publisher begins the next group
-immediately upon the base layer completing.
-
-## Backpressure {#backpressure}
-
-When the subscriber is reading slowly (due to playback buffering,
-application processing, or network congestion), the publisher pauses
-delivery. This is the natural result of QUIC flow control or congestion
-control blocking the sending streams.
-
-For MODE=VOD subscriptions without DELIVERY_TIMEOUT, the publisher
-waits indefinitely for the subscriber to consume data. No content
-is dropped.
-
-When DELIVERY_TIMEOUT is specified, slow subgroups may be reset as
-described in {{timeout}}. However, the highest-priority subgroup
-(base layer) is never timed out - the publisher continues to wait
-for the subscriber to read it.
 
 ## Timeout Semantics {#timeout}
 
 DELIVERY_TIMEOUT, when used with MODE=VOD, has refined semantics to
-enable prioritized delivery under constrained conditions.
+enable prioritized delivery under constrained conditions. This section
+describes timeout behavior for stream-based delivery; datagram timeout
+behavior is described in {{datagram-delivery}}.
 
 ### Timeout Activation {#timeout-activation}
 
-The DELIVERY_TIMEOUT clock for a subgroup starts only when there is
-contention - that is, when another subgroup needs the slot that the
-current subgroup is occupying.
+The DELIVERY_TIMEOUT clock for content at a priority level starts only
+when there is contention - that is, when other content needs the slot
+that the current content is occupying.
 
 Contention occurs in two scenarios:
 
-1. **Within a group**: Multiple subgroups at the same priority level
-   are serialized by first object ID. If subgroup A is in flight and
-   subgroup B (same priority, higher first object ID) is ready to
-   start, B is blocked by A. Timeout starts on A.
+1. **Within a group**: Content at the same priority level is serialized
+   by first object ID. If content A is in-flight and content B (same
+   priority, higher first object ID) is ready to start, B is blocked
+   by A. Timeout starts on A.  This does not apply within a single
+   subgroup.
 
-2. **Across groups**: A subgroup from group N+1 at priority P is ready
-   to start, but a subgroup from group N at priority P is still in
-   flight. Timeout starts on the group N subgroup.
+2. **Across groups**: Content from group N+1 at priority P is ready
+   to start, but content from group N at priority P is still in
+   flight. Timeout starts on the group N content.
 
-If no subgroup is waiting for the slot, the in-flight subgroup
-continues without timeout pressure.
+If nothing is waiting for the slot, the in-flight content continues
+without timeout pressure.
 
 When a new group begins:
 
-1. The publisher begins delivery of the new group's base layer
-   (highest priority subgroup).
+1. The publisher begins delivery of the new group's base layer.
 
-2. Enhancement layer subgroups of the new group wait for their
-   priority level to become available (no in-flight subgroups at
-   that priority from the previous group).
+2. Enhancement layers of the new group wait for their priority level
+   to become available (no in-flight content at that priority from the
+   previous group).
 
 ### Base Layer Immunity {#base-immunity}
 
-The highest-priority subgroup (lowest Publisher Priority value) within
-each group MUST NOT be timed out. This subgroup contains essential
-content required for playback.
+The base layer within each group MUST NOT be timed out. It
+contains essential content required for playback.
 
 If the base layer cannot be delivered within available bandwidth, the
-subscriber should switch to a lower-quality track.
+subscriber SHOULD switch to a lower-quality track.
 
 ### Timeout Behavior {#timeout-behavior}
 
-When a subgroup stream's timeout expires:
+When a stream's timeout expires:
 
 1. The publisher resets the stream
-2. When all subgroups at that priority level have completed or been
-   reset, the priority level becomes available for the next group
-3. The publisher may begin subgroups at that priority for the next group
+2. When all content at that priority level has completed or been
+   abandoned, the priority level becomes available for the next group
+3. The publisher can begin content at that priority for the next group
 
 ### Example {#timeout-example}
 
@@ -662,6 +629,19 @@ In this example, the base layer (SG0) flows continuously at the
 requested rate. The enhancement layer (SG1) is reset when it cannot
 keep up, resulting in degraded but continuous playback.
 
+## Backpressure {#backpressure}
+
+When the subscriber is reading slowly (due to playback buffering,
+application processing, or network congestion), QUIC flow control
+blocks individual streams.
+
+For MODE=VOD subscriptions without DELIVERY_TIMEOUT, the publisher
+waits indefinitely for the subscriber to consume data.
+
+When DELIVERY_TIMEOUT is specified, timeout behavior applies as
+described above. Timeouts operate independently per priority level -
+a blocked base layer does not suspend enhancement layer timeouts.
+
 ## Pause and Resume {#pause-resume}
 
 Subscribers can pause and resume VOD delivery at any time using
@@ -681,7 +661,7 @@ tearing down the subscription, and to manage buffer depth dynamically.
 
 When a live subscription is paused with REQUEST_UPDATE Forward=0, the
 subscriber falls behind the live edge. Upon resuming, the subscriber
-may wish to catch up to live at an accelerated rate.
+might wish to catch up to live at an accelerated rate.
 
 To catch up, the subscriber sends REQUEST_UPDATE with:
 
@@ -706,8 +686,8 @@ This switches the subscription to VOD mode, enabling:
 
 - Fill semantics for the backlog of content
 - Paced delivery at the specified GROUP_INTERVAL (faster than realtime)
-- Subgroup stream constraints and timeout behavior as specified in
-  {{delivery}}
+- Delivery constraints and timeout behavior as specified in
+  {{delivery-constraints}} and {{timeout}}
 - Subgroup flow control with count reset (see {{max-sub-subgroups-param}})
 
 When the subscriber catches up to the live edge, the publisher sends
@@ -763,7 +743,7 @@ current position (equivalent to START_GROUP_OFFSET=0).
 
 ## Delivery Examples {#delivery-examples}
 
-This section illustrates how subgroup constraints, flow control, timeout,
+This section illustrates how delivery constraints, flow control, timeout,
 and credit granting work together.
 
 ### Video Track Example
@@ -773,9 +753,9 @@ Consider a video track with 2 subgroups per group at different priorities:
 - SG0 at priority 0 (base layer)
 - SG1 at priority 128 (enhancement layer)
 
-Since they have different priorities, SG0 and SG1 can be in flight
-concurrently. However, G0/SG0 must complete before G1/SG0 starts, and
-G0/SG1 must complete before G1/SG1 starts (per-priority ordering).
+Since they have different priorities, SG0 and SG1 can be in-flight
+concurrently. However, G0/SG0 completes before G1/SG0 starts, and
+G0/SG1 completes before G1/SG1 starts (per-priority ordering).
 
 ### Audio Track Example
 
@@ -933,7 +913,7 @@ been delivered.
 
 ## Using SWITCH
 
-If the SWITCH mechanism is supported, subscribers may use it to
+If the SWITCH mechanism is supported, subscribers can use it to
 atomically transition from VOD to live without managing two
 subscriptions.
 
