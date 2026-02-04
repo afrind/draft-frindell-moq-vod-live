@@ -978,7 +978,7 @@ parameter and a Track Extension Header.
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+Claude (Anthropic) assisted with drafting and refining this document.
 
 # Changelog
 {:numbered="false"}
